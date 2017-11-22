@@ -1,14 +1,13 @@
 import '../css/main.scss';
 
-const dropdown = document.getElementById('dropdown');
-const toggle = document.getElementById('toggle');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const toggleButton = document.getElementById('toggleButton');
 
-toggle.addEventListener('click', () => {
-  const classList = Array.from(dropdown.classList);
+toggleButton.addEventListener('click', () => {
+  const classList = Array.from(dropdownMenu.classList);
+  const classToToggle = 'nav__dropdown--show';
 
-  if (classList.includes('nav__dropdown--show')) {
-    dropdown.classList = classList.filter(className => className !== 'nav__dropdown--show');
-  } else {
-    dropdown.className = dropdown.className + ' nav__dropdown--show';
-  }
+  dropdownMenu.classList = classList.includes(classToToggle) ?
+    classList.filter(currentClass => currentClass !== classToToggle).join(' ') :
+    classList.concat([classToToggle]).join(' ')
 })
